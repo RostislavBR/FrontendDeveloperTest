@@ -1,10 +1,13 @@
 <template>
-    <h1 class="title">Hello world</h1>
+    <Head/>
 </template>
 
 <script>
+    import Head from "@/components/Head";
+
     export default {
-        name: "MainPage"
+        name: "MainPage",
+        components: { Head },
     }
 </script>
 
