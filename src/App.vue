@@ -23,7 +23,7 @@
     padding: 0;
   }
   body, html {
-    width: 1920px;
+    width: 100%;
     height: 100%;
     overflow-x: hidden;
     background: $backgroundColor;
@@ -34,9 +34,8 @@
   .container {
     display: flex;
     flex-direction: column;
-    width: 1024px;
+    width: 1440px;
     margin: 0 auto;
-    padding: 0 32px;
   }
 </style>
 <script>
