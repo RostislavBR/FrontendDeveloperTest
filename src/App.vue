@@ -23,18 +23,20 @@
     padding: 0;
   }
   body, html {
-    width: 100%;
+    width: 1920px;
     height: 100%;
     overflow-x: hidden;
     background: $backgroundColor;
   }
-  #app {
-    padding: 0 32px;
-  }
+  /*#app {*/
+  /*  */
+  /*}*/
   .container {
     display: flex;
-    width: 1920px;
+    flex-direction: column;
+    width: 1024px;
     margin: 0 auto;
+    padding: 0 32px;
   }
 </style>
 <script>
