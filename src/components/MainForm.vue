@@ -49,6 +49,7 @@
         max-height: 440px;
         background: $formBackground;
         padding: 24px;
+        margin: 0 16px 0 0;
         box-shadow: $boxShadow;
         border-radius: $borderRadius;
     }
