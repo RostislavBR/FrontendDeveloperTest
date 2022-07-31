@@ -1,8 +1,8 @@
 <template>
     <div class="products-info-wrapper">
-        <ProductsTitle/>
-        <ProductsDescription/>
-        <ProductsPrice/>
+        <ProductsTitle :title="title"/>
+        <ProductsDescription :description="description"/>
+        <ProductsPrice :price="price"/>
     </div>
 </template>
 
@@ -13,6 +13,7 @@
 
     export default {
         name: "ProductsInfo",
+        props: ['title', 'description', 'price'],
         components: { ProductsPrice, ProductsDescription, ProductsTitle }
     }
 </script>

@@ -3,7 +3,7 @@
         <MainForm/>
         <div class="grid-wrapper">
             <MainGrid>
-                <MainGridItem v-for="items in 10" :key="items"/>
+                <MainGridItem  v-for="({ id, image, title, description, price }) in products" :key="id" :image="image" :title="title" :description="description" :price="price"/>
             </MainGrid>
         </div>
     </div>
@@ -13,10 +13,14 @@
     import MainForm from "@/components/MainForm";
     import MainGrid from "@/components/MainGrid";
     import MainGridItem from "@/components/MainGridItem";
+    import { mapGetters } from "vuex";
 
     export default {
         name: "MainContent",
         components: { MainGridItem, MainGrid, MainForm },
+        computed: {
+            ...mapGetters({products: 'getProducts'})
+        },
     }
 </script>
 

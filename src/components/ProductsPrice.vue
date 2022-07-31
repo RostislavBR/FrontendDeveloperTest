@@ -1,12 +1,13 @@
 <template>
     <span class="products-price">
-        10 000 руб.
+        {{ price }}руб.
     </span>
 </template>
 
 <script>
     export default {
-        name: "ProductsPrice"
+        name: "ProductsPrice",
+        props: ['price'],
     }
 </script>
 

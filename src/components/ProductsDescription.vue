@@ -1,12 +1,13 @@
 <template>
     <p class="products-description">
-        Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк
+        {{ description }}
     </p>
 </template>
 
 <script>
     export default {
-        name: "ProductsDescription"
+        name: "ProductsDescription",
+        props: ['description']
     }
 </script>
 
