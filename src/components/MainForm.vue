@@ -1,28 +1,31 @@
 <template>
     <div class="form-wrapper">
-        <form class="form" @submit.prevent="onSubmit">
+        <form class="form" @submit.prevent="submit">
             <div class="form-text-wrapper">
                 <label class="form-text label">
                     <span class="form-description">Наименование товара</span>
-                    <input type="text" class="form-text-input input" value="Введите наименование товара">
+                    <input type="text" class="form-text-input input" v-model.trim="$v.name.$model">
+                    <span class="error" v-if="$v.name.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="form-textarea-wrapper">
                 <label class="form-textarea label">
                     <span class="form-description">Описание товара</span>
-                    <input type="textarea" class="form-textarea-input input" value="Введите описание товара">
+                    <input type="textarea" class="form-textarea-input input" v-model.trim="$v.description.$model" value="Введите описание товара">
                 </label>
             </div>
             <div class="form-image-wrapper">
                 <label class="form-image label">
                     <span class="form-description">Ссылка на изображение товара</span>
-                    <input type="text" class="form-image-input input" value="Введите ссылку">
+                    <input type="text" class="form-image-input input" v-model.trim="$v.image.$model" value="Введите ссылку">
+                    <span class="error" v-if="$v.name.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="form-price-wrapper">
                 <label class="form-price label">
                     <span class="form-description">Цена товара</span>
-                    <input type="text" class="form-price-input input" value="Введите цену">
+                    <input type="text" class="form-price-input input" v-model.trim="$v.price.$model" value="Введите цену">
+                    <span class="error" v-if="$v.name.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="button-wrapper">
@@ -33,12 +36,43 @@
 </template>
 
 <script>
+    import {required, maxLength, minLength, between} from 'vuelidate/lib/validators'
+
     export default {
         name: "MainForm",
-        methods: {
-            onSubmit() {
-                console.log('form')
+        data() {
+            return {
+                name: null,
+                description: null,
+                image: null,
+                price: null,
+                submitError: false,
+            }
+        },
+        validations: {
+            name: {
+                required,
+                minLength: minLength(3),
+                maxLength: maxLength(50),
             },
+            description: {
+                minLength: minLength(20),
+                maxLength: maxLength(250),
+            },
+            image: {
+                required
+            },
+            price: {
+                required,
+                between: between(100, 100000)
+            }
+        },
+        methods: {
+            submit() {
+                if(this.$v.$invalid) {
+                    this.submitError = true;
+                }
+            }
         }
     }
 </script>
@@ -46,18 +80,19 @@
 <style lang="scss">
     .form {
         max-width: 332px;
-        max-height: 440px;
         background: $formBackground;
         padding: 24px;
         margin: 0 16px 0 0;
         box-shadow: $boxShadow;
         border-radius: $borderRadius;
     }
+
     .label {
         display: flex;
         flex-direction: column;
         margin: 0 0 16px 0;
     }
+
     .form-description {
         display: block;
         font-size: $littleFontSize;
@@ -66,6 +101,7 @@
         color: $darkColor;
         margin: 0 0 4px 0;
     }
+
     .input {
         max-width: 284px;
         font-size: $formFontSize;
@@ -77,21 +113,27 @@
         box-shadow: $inputShadow;
         outline: none;
     }
+
     .form-textarea-input {
         padding-top: 0;
         padding-bottom: 0;
         min-height: 108px;
     }
+
     .form-button {
         display: block;
         width: 284px;
         font-size: $formFontSize;
         font-weight: $bolderFontWeight;
         color: $greyColor;
-        background: $formButtonBackground;
+        background: $greenColor;
         padding: 10px 0;
         border: none;
         border-radius: $buttonRadius;
         outline: none;
+
+        &:disabled {
+            background: $formButtonBackground;
+        }
     }
 </style>
