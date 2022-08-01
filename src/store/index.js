@@ -9,9 +9,9 @@ export default new Vuex.Store({
         products,
     },
     mutations: {
-        // setProducts(state) {
-        //   state.products = products
-        // }
+        setProducts(state, payload) {
+          state.products = [ payload, ...products ];
+        }
     },
     getters: {
         getProducts(state) {

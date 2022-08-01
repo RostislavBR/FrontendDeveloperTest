@@ -4,28 +4,31 @@
             <div class="form-text-wrapper">
                 <label class="form-text label">
                     <span class="form-description">Наименование товара</span>
-                    <input type="text" class="form-text-input input" v-model.trim="$v.name.$model">
-                    <span class="error" v-if="$v.name.$invalid && submitError">error</span>
+                    <input type="text" class="form-text-input input" v-model.trim="$v.title.$model">
+                    <span class="error" v-if="$v.title.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="form-textarea-wrapper">
                 <label class="form-textarea label">
                     <span class="form-description">Описание товара</span>
-                    <input type="textarea" class="form-textarea-input input" v-model.trim="$v.description.$model" value="Введите описание товара">
+                    <input type="textarea" class="form-textarea-input input" v-model.trim="$v.description.$model"
+                           value="Введите описание товара">
                 </label>
             </div>
             <div class="form-image-wrapper">
                 <label class="form-image label">
                     <span class="form-description">Ссылка на изображение товара</span>
-                    <input type="text" class="form-image-input input" v-model.trim="$v.image.$model" value="Введите ссылку">
-                    <span class="error" v-if="$v.name.$invalid && submitError">error</span>
+                    <input type="text" class="form-image-input input" v-model.trim="$v.image.$model"
+                           value="Введите ссылку">
+                    <span class="error" v-if="$v.image.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="form-price-wrapper">
                 <label class="form-price label">
                     <span class="form-description">Цена товара</span>
-                    <input type="text" class="form-price-input input" v-model.trim="$v.price.$model" value="Введите цену">
-                    <span class="error" v-if="$v.name.$invalid && submitError">error</span>
+                    <input type="text" class="form-price-input input" v-model.trim="$v.price.$model"
+                           value="Введите цену">
+                    <span class="error" v-if="$v.price.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="button-wrapper">
@@ -36,13 +39,14 @@
 </template>
 
 <script>
-    import {required, maxLength, minLength, between} from 'vuelidate/lib/validators'
+    import {required, maxLength, minLength, between} from 'vuelidate/lib/validators';
+    import {mapMutations} from "vuex";
 
     export default {
         name: "MainForm",
         data() {
             return {
-                name: null,
+                title: null,
                 description: null,
                 image: null,
                 price: null,
@@ -50,13 +54,13 @@
             }
         },
         validations: {
-            name: {
+            title: {
                 required,
                 minLength: minLength(3),
                 maxLength: maxLength(50),
             },
             description: {
-                minLength: minLength(20),
+                minLength: minLength(0),
                 maxLength: maxLength(250),
             },
             image: {
@@ -68,11 +72,15 @@
             }
         },
         methods: {
+            ...mapMutations({setProducts: 'setProducts'}),
             submit() {
-                if(this.$v.$invalid) {
-                    this.submitError = true;
-                }
-            }
+                this.$v.$invalid ? this.submitError = true : this.setProducts({
+                    title: this.title,
+                    description: this.description,
+                    image: this.image,
+                    price: this.price,
+                })
+            },
         }
     }
 </script>
