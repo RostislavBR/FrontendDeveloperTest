@@ -1,6 +1,6 @@
 <template>
     <div class="image-wrapper">
-        <img :src="require(`@/image/${image}`)">
+        <img :src="image">
     </div>
 </template>
 
@@ -13,7 +13,10 @@
 
 <style lang="scss">
     .image-wrapper {
-        min-height: 200px;
         margin:  0 0 16px 0;
+        img {
+            width: 332px;
+            max-height: 200px;
+        }
     }
 </style>
