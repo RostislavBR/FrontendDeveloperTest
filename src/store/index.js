@@ -11,11 +11,14 @@ export default new Vuex.Store({
     mutations: {
         setProducts(state, payload) {
           state.products = [ payload, ...products ];
+        },
+        deleteProduct(state, payload) {
+            state.products = state.products.filter(({id}) => id !== payload);
         }
     },
     getters: {
         getProducts(state) {
-            return state.products
+            return state.products;
         },
     },
     modules: {},

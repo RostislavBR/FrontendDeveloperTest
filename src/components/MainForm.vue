@@ -40,12 +40,13 @@
 
 <script>
     import {required, maxLength, minLength, between} from 'vuelidate/lib/validators';
-    import {mapMutations} from "vuex";
+    import {mapMutations, mapGetters} from "vuex";
 
     export default {
         name: "MainForm",
         data() {
             return {
+                id: null,
                 title: null,
                 description: null,
                 image: null,
@@ -57,11 +58,11 @@
             title: {
                 required,
                 minLength: minLength(3),
-                maxLength: maxLength(50),
+                maxLength: maxLength(20),
             },
             description: {
                 minLength: minLength(0),
-                maxLength: maxLength(250),
+                maxLength: maxLength(50),
             },
             image: {
                 required
@@ -75,12 +76,16 @@
             ...mapMutations({setProducts: 'setProducts'}),
             submit() {
                 this.$v.$invalid ? this.submitError = true : this.setProducts({
+                    id: this.getProducts.length + 1,
                     title: this.title,
                     description: this.description,
                     image: this.image,
                     price: this.price,
                 })
             },
+        },
+        computed: {
+            ...mapGetters({getProducts: 'getProducts'})
         }
     }
 </script>

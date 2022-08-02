@@ -3,7 +3,7 @@
         <MainForm/>
         <div class="grid-wrapper">
             <MainGrid>
-                <MainGridItem  v-for="({ id, image, title, description, price }) in products" :key="id" :image="image" :title="title" :description="description" :price="price"/>
+                <MainGridItem  v-for="({ id, image, title, description, price }) in products" :key="id" :id="id" :image="image" :title="title" :description="description" :price="price"/>
             </MainGrid>
         </div>
     </div>

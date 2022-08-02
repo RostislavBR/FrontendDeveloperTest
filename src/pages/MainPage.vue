@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="full-content-wrapper">
         <Head/>
         <MainContent/>
     </div>
@@ -16,7 +16,7 @@
 </script>
 
 <style lang="scss">
-    .title {
-        font-size: $bigTitle;
+    .full-content-wrapper {
+        padding: 0 32px 0 32px;
     }
 </style>
