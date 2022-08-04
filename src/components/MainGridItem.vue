@@ -20,9 +20,11 @@
 
 <style lang="scss">
     .products-grid-item {
+        display: flex;
+        flex-direction: column;
         position: relative;
         max-width: 332px;
-        max-height: 423px;
+        min-height: 423px;
         background: $formBackground;
         border-radius: $borderRadius;
         box-shadow: $boxShadow;

@@ -3,7 +3,7 @@
         <form class="form" @submit.prevent="submit">
             <div class="form-text-wrapper">
                 <label class="form-text label">
-                    <span class="form-description">Наименование товара</span>
+                    <span class="form-description require">Наименование товара</span>
                     <input type="text" class="form-text-input input" v-model.trim="$v.title.$model"
                            placeholder="Введите наименование товара">
                     <span class="error" v-if="$v.title.$invalid && submitError">error</span>
@@ -18,7 +18,7 @@
             </div>
             <div class="form-image-wrapper">
                 <label class="form-image label">
-                    <span class="form-description">Ссылка на изображение товара</span>
+                    <span class="form-description require">Ссылка на изображение товара</span>
                     <input type="text" class="form-image-input input" v-model.trim="$v.image.$model"
                            placeholder="Введите ссылку">
                     <span class="error" v-if="$v.image.$invalid && submitError">error</span>
@@ -26,14 +26,14 @@
             </div>
             <div class="form-price-wrapper">
                 <label class="form-price label">
-                    <span class="form-description">Цена товара</span>
+                    <span class="form-description require">Цена товара</span>
                     <input type="text" class="form-price-input input" v-model.trim="$v.price.$model"
                            placeholder="Введите цену">
                     <span class="error" v-if="$v.price.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="button-wrapper">
-                <button class="form-button" type="submit">Добавить товар</button>
+                <button class="form-button" type="submit" :disabled="$v.$invalid">Добавить товар</button>
             </div>
         </form>
     </div>
@@ -115,14 +115,14 @@
                 letter-spacing: -0.02em;
                 color: $darkColor;
                 margin: 0 0 4px 0;
-                &:after {
-                    content: '';
-                    width: 4px;
-                    height: 4px;
-                    background: pink;
-                    border-radius: 4px;
-                    position: absolute;
-                }
+            }
+            .require:after {
+                content: '';
+                width: 4px;
+                height: 4px;
+                background: pink;
+                border-radius: 4px;
+                position: absolute;
             }
         }
 

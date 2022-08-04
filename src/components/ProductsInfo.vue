@@ -20,6 +20,10 @@
 
 <style lang="scss">
     .products-info-wrapper {
-        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 0 16px 24px 16px;
+        overflow: hidden;
     }
 </style>

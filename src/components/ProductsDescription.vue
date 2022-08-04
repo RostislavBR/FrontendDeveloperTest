@@ -17,6 +17,6 @@
         font-weight: $normalFontWeight;
         line-height: $normalLineHeight;
         color: $blackColor;
-        margin: 0 0 32px 0;
+        flex-grow: 3;
     }
 </style>

@@ -18,5 +18,6 @@
         font-weight: $bolderFontWeight;
         line-height: $priceTagLineHeight;
         color: $blackColor;
+        flex-grow: 0;
     }
 </style>
