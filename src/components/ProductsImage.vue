@@ -1,6 +1,6 @@
 <template>
     <div class="image-wrapper">
-        <img :src="image">
+        <img :src="image" class="image">
     </div>
 </template>
 
@@ -14,9 +14,10 @@
 <style lang="scss">
     .image-wrapper {
         margin:  0 0 16px 0;
-        img {
+        .image {
             width: 332px;
             max-height: 200px;
+            object-fit: contain;
         }
     }
 </style>

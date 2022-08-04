@@ -28,8 +28,8 @@
 <style lang="scss">
     .delete-button {
         position: absolute;
-        left: 310px;
-        bottom: 400px;
+        top: -10px;
+        right: -4px;
         width: 32px;
         min-height: 32px;
         background-image: url("../image/delete.svg");
