@@ -4,22 +4,23 @@
             <div class="form-text-wrapper">
                 <label class="form-text label">
                     <span class="form-description">Наименование товара</span>
-                    <input type="text" class="form-text-input input" v-model.trim="$v.title.$model">
+                    <input type="text" class="form-text-input input" v-model.trim="$v.title.$model"
+                           placeholder="Введите наименование товара">
                     <span class="error" v-if="$v.title.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="form-textarea-wrapper">
                 <label class="form-textarea label">
                     <span class="form-description">Описание товара</span>
-                    <input type="textarea" class="form-textarea-input input" v-model.trim="$v.description.$model"
-                           value="Введите описание товара">
+                    <textarea class="form-textarea-input input" v-model.trim="$v.description.$model"
+                              placeholder="Введите описание товара"></textarea>
                 </label>
             </div>
             <div class="form-image-wrapper">
                 <label class="form-image label">
                     <span class="form-description">Ссылка на изображение товара</span>
                     <input type="text" class="form-image-input input" v-model.trim="$v.image.$model"
-                           value="Введите ссылку">
+                           placeholder="Введите ссылку">
                     <span class="error" v-if="$v.image.$invalid && submitError">error</span>
                 </label>
             </div>
@@ -27,7 +28,7 @@
                 <label class="form-price label">
                     <span class="form-description">Цена товара</span>
                     <input type="text" class="form-price-input input" v-model.trim="$v.price.$model"
-                           value="Введите цену">
+                           placeholder="Введите цену">
                     <span class="error" v-if="$v.price.$invalid && submitError">error</span>
                 </label>
             </div>
@@ -93,60 +94,76 @@
 <style lang="scss">
     .form {
         max-width: 332px;
+        max-height: 440px;
         background: $formBackground;
         padding: 24px;
         margin: 0 16px 0 0;
         box-shadow: $boxShadow;
         border-radius: $borderRadius;
-    }
 
-    .label {
-        display: flex;
-        flex-direction: column;
-        margin: 0 0 16px 0;
-    }
+        .label {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 16px 0;
 
-    .form-description {
-        display: block;
-        font-size: $littleFontSize;
-        font-weight: $normalFontWeight;
-        line-height: $littleLineHeight;
-        color: $darkColor;
-        margin: 0 0 4px 0;
-    }
+            .form-description {
+                position: relative;
+                display: block;
+                font-size: $littleFontSize;
+                font-weight: $normalFontWeight;
+                line-height: $littleLineHeight;
+                letter-spacing: -0.02em;
+                color: $darkColor;
+                margin: 0 0 4px 0;
+                &:after {
+                    content: '';
+                    width: 4px;
+                    height: 4px;
+                    background: pink;
+                    border-radius: 4px;
+                    position: absolute;
+                }
+            }
+        }
 
-    .input {
-        max-width: 284px;
-        font-size: $formFontSize;
-        font-weight: $normalFontWeight;
-        color: $greyColor;
-        padding: 10px 0;
-        border: none;
-        border-radius: $borderRadius;
-        box-shadow: $inputShadow;
-        outline: none;
-    }
+        .form-price {
+            margin: 0 0 24px 0;
+        }
 
-    .form-textarea-input {
-        padding-top: 0;
-        padding-bottom: 0;
-        min-height: 108px;
-    }
+        .input {
+            max-width: 284px;
+            font-size: $formFontSize;
+            font-weight: $normalFontWeight;
+            color: $greyColor;
+            padding: 10px 0 10px 16px;
+            border: none;
+            border-radius: $borderRadius;
+            box-shadow: $inputShadow;
+            outline: none;
+        }
 
-    .form-button {
-        display: block;
-        width: 284px;
-        font-size: $formFontSize;
-        font-weight: $bolderFontWeight;
-        color: $greyColor;
-        background: $greenColor;
-        padding: 10px 0;
-        border: none;
-        border-radius: $buttonRadius;
-        outline: none;
+        .form-textarea-input {
+            padding-bottom: 0;
+            min-height: 98px;
+            resize: none;
+        }
 
-        &:disabled {
-            background: $formButtonBackground;
+        .form-button {
+            display: block;
+            width: 284px;
+            font-size: $formFontSize;
+            font-weight: $bolderFontWeight;
+            color: $whiteColor;
+            background: $greenColor;
+            padding: 10px 0;
+            border: none;
+            border-radius: $buttonRadius;
+            outline: none;
+
+            &:disabled {
+                background: $formButtonBackground;
+                color: $greyColor;
+            }
         }
     }
 </style>
