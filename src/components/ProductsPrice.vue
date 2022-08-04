@@ -1,6 +1,6 @@
 <template>
     <span class="products-price">
-        {{ price }}руб.
+        {{ price.toLocaleString() }} руб.
     </span>
 </template>
 
@@ -18,6 +18,5 @@
         font-weight: $bolderFontWeight;
         line-height: $priceTagLineHeight;
         color: $blackColor;
-        margin: 0 0 24px 0;
     }
 </style>
