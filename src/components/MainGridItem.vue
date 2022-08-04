@@ -26,5 +26,11 @@
         background: $formBackground;
         border-radius: $borderRadius;
         box-shadow: $boxShadow;
+        &:hover {
+            .delete-button {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
     }
 </style>
