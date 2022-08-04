@@ -15,9 +15,6 @@
         name: "MainGridItem",
         props: ['id', 'image', 'title', 'description', 'price'],
         components: { DeleteButton, ProductsInfo, ProductsImage },
-        mounted() {
-            console.log(this.id)
-        }
     }
 </script>
 

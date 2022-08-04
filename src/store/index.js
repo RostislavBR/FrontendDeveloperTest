@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         products,
+
     },
     mutations: {
         setProducts(state, payload) {
@@ -14,6 +15,10 @@ export default new Vuex.Store({
         },
         deleteProduct(state, payload) {
             state.products = state.products.filter(({id}) => id !== payload);
+        },
+        sortProducts(state, payload) {
+            console.log(payload)
+            state.products = state.products.sort(payload)
         }
     },
     getters: {
