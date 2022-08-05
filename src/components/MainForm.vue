@@ -6,7 +6,7 @@
                     <span class="error" v-if="$v.title.$invalid && submitError">Поле является обязательным</span>
                     <span class="form-description require">Наименование товара</span>
                     <input type="text" class="form-text-input input" v-model.trim="$v.title.$model"
-                           placeholder="Введите наименование товара">
+                           placeholder="Введите наименование товара" v-if="$v.title.invalid">
                 </label>
             </div>
             <div class="form-textarea-wrapper">
@@ -28,8 +28,8 @@
                 <label class="form-price label">
                     <span class="error" v-if="$v.price.$invalid && submitError">Поле является обязательным</span>
                     <span class="form-description require">Цена товара</span>
-                    <input type="text" class="form-price-input input" v-model.trim="$v.price.$model"
-                           placeholder="Введите цену">
+                    <the-mask type="text" class="form-price-input input" v-model.trim="$v.price.$model"
+                           placeholder="Введите цену" :mask="['####','#.###','##.###', '###.###']"/>
                 </label>
             </div>
             <div class="button-wrapper">
@@ -42,9 +42,11 @@
 <script>
     import {required, maxLength, minLength, between} from 'vuelidate/lib/validators';
     import {mapMutations, mapGetters} from "vuex";
+    import {TheMask} from 'vue-the-mask';
 
     export default {
         name: "MainForm",
+        components: { TheMask },
         data() {
             return {
                 id: null,
@@ -76,8 +78,7 @@
         },
         methods: {
             ...mapMutations({setProducts: 'setProducts'}),
-            submit(e) {
-                e.target.reset();
+            submit() {
                 this.$v.$invalid ? this.submitError = true : this.setProducts({
                     id: this.getProducts.length + Math.round(1 + Math.random() * 100),
                     title: this.title,
