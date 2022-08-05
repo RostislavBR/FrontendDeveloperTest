@@ -76,6 +76,7 @@
         position: relative;
         width: 121.49px;
         background: $formBackground;
+        cursor: url("../image/Vector.svg") 2 2, pointer;
 
         .select-title {
             font-size: $formFontSize;
@@ -85,7 +86,6 @@
             border: none;
             box-shadow: $inputShadow;
             padding: 10px 0;
-            cursor: pointer;
             &:after {
                 content: '';
                 padding: 0 5px;
@@ -105,7 +105,6 @@
             border: none;
             border-radius: $borderRadius;
             box-shadow: $inputShadow;
-            cursor: pointer;
             z-index: 100;
             opacity: 0;
             pointer-events: none;
