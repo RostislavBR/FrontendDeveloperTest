@@ -12,7 +12,7 @@
 
 <script>
     import {mapMutations} from "vuex";
-    import gsap from "gsap";
+    import { gsap } from "gsap";
 
     export default {
         name: "SelectWrapper",
@@ -84,8 +84,16 @@
             border-radius: $borderRadius;
             border: none;
             box-shadow: $inputShadow;
-            padding: 11px 0;
+            padding: 10px 0;
             cursor: pointer;
+            &:after {
+                content: '';
+                padding: 0 5px;
+                margin: 0 0 0 4px;
+                background-image: url("../image/arrow.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+            }
         }
 
         .options {

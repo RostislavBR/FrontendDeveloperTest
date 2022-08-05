@@ -9,9 +9,6 @@
     export default {
         name: "ProductsImage",
         props: ['image'],
-        mounted() {
-            console.log(typeof this.image)
-        }
     }
 </script>
 
