@@ -1,13 +1,18 @@
 <template>
     <span class="products-price">
-        {{ price.toLocaleString() }} руб.
+        {{ price | numberFormat }} &#8381;
     </span>
 </template>
 
 <script>
+    import numberFormat from "@/helpers/numberFormat";
+
     export default {
         name: "ProductsPrice",
         props: ['price'],
+        filters: {
+            numberFormat,
+        }
     }
 </script>
 
