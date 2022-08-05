@@ -11,7 +11,7 @@
 
     export default {
         name: "MainPage",
-        components: { MainContent, Head },
+        components: {MainContent, Head},
     }
 </script>
 

@@ -12,7 +12,7 @@
 
 <script>
     import {mapMutations} from "vuex";
-    import { gsap } from "gsap";
+    import {gsap} from "gsap";
 
     export default {
         name: "SelectWrapper",
@@ -25,19 +25,19 @@
         methods: {
             ...mapMutations(['sortProducts']),
             onClickDefaultFilter() {
-              gsap.to('.options', {
-                  duration: .4,
-                  delay: .2,
-                  opacity: 1,
-                  pointerEvents: 'all',
-              })
+                gsap.to('.options', {
+                    duration: .4,
+                    delay: .2,
+                    opacity: 1,
+                    pointerEvents: 'all',
+                })
             },
             onClickFilter() {
-               gsap.to('.options', {
-                   duration: .2,
-                   delay: .2,
-                   opacity: 0,
-                   pointerEvents: 'none',
+                gsap.to('.options', {
+                    duration: .2,
+                    delay: .2,
+                    opacity: 0,
+                    pointerEvents: 'none',
                 });
             },
             sortByMin(first, second) {
@@ -86,6 +86,7 @@
             border: none;
             box-shadow: $inputShadow;
             padding: 10px 0;
+
             &:after {
                 content: '';
                 padding: 0 5px;

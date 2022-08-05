@@ -13,15 +13,15 @@
         name: "Head",
         props: ['defaultSort'],
         data() {
-          return {
-              options: [
-                  {name: 'По убыванию', value: 'max'},
-                  {name: 'По возрастанию', value: 'min'},
-                  {name: 'По наименованию', value: 'name'},
-              ],
-          }
+            return {
+                options: [
+                    {name: 'По убыванию', value: 'max'},
+                    {name: 'По возрастанию', value: 'min'},
+                    {name: 'По наименованию', value: 'name'},
+                ],
+            }
         },
-        components: { HeadTitle, SelectWrapper },
+        components: {HeadTitle, SelectWrapper},
     }
 </script>
 
