@@ -6,7 +6,7 @@
                     <span class="error" v-if="$v.title.$invalid && submitError">Поле является обязательным</span>
                     <span class="form-description require">Наименование товара</span>
                     <input type="text" class="form-text-input input" v-model.trim="$v.title.$model"
-                           placeholder="Введите наименование товара" v-if="$v.title.invalid">
+                           placeholder="Введите наименование товара">
                 </label>
             </div>
             <div class="form-textarea-wrapper">
@@ -168,6 +168,7 @@
             border: none;
             border-radius: $buttonRadius;
             outline: none;
+            cursor: url("../image/Vector.svg") 2 2, pointer;
 
             &:disabled {
                 background: $formButtonBackground;

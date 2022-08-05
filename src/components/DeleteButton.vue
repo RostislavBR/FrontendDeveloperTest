@@ -41,6 +41,6 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.4s ease;
-        cursor: pointer;
+        cursor: url("../image/Vector.svg") 2 2, pointer;
     }
 </style>

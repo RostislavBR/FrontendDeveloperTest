@@ -28,6 +28,7 @@
         background: $formBackground;
         border-radius: $borderRadius;
         box-shadow: $boxShadow;
+        cursor: url("../image/Vector.svg") 2 2, pointer;
         &:hover {
             .delete-button {
                 opacity: 1;
