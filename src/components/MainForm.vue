@@ -59,26 +59,27 @@
             title: {
                 required,
                 minLength: minLength(3),
-                maxLength: maxLength(50),
+                maxLength: maxLength(100),
             },
             description: {
                 minLength: minLength(0),
                 maxLength: maxLength(1000),
+
             },
             image: {
-                required
+                required,
             },
             price: {
                 required,
-                between: between(100, 100000)
+                between: between(100, 1000000),
             },
-            reset: true,
         },
         methods: {
             ...mapMutations({setProducts: 'setProducts'}),
-            submit() {
+            submit(e) {
+                e.target.reset();
                 this.$v.$invalid ? this.submitError = true : this.setProducts({
-                    id: this.getProducts.length + Math.round(Math.random()),
+                    id: this.getProducts.length + Math.round(1 + Math.random() * 100),
                     title: this.title,
                     description: this.description,
                     image: this.image,
@@ -129,6 +130,7 @@
                 font-size: 8px;
                 color: $pinkColor;
                 margin: 0 0 2px 0;
+                letter-spacing: -0.02em;
             }
         }
 
