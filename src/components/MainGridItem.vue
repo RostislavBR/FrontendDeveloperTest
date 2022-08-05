@@ -23,7 +23,7 @@
         display: flex;
         flex-direction: column;
         position: relative;
-        max-width: 332px;
+        min-width: 332px;
         min-height: 423px;
         background: $formBackground;
         border-radius: $borderRadius;

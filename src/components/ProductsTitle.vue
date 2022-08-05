@@ -1,11 +1,16 @@
 <template>
-    <h2 class="products-title">{{ title }}</h2>
+    <h2 class="products-title">{{ title | cutLongText(27, '...') }}</h2>
 </template>
 
 <script>
+    import cutLongText from "@/helpers/cutLongText";
+
     export default {
         name: "ProductsTitle",
-        props: ['title']
+        props: ['title'],
+        filters: {
+            cutLongText
+        }
     }
 </script>
 

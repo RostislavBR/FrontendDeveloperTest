@@ -3,10 +3,10 @@
         <form class="form" @submit.prevent="submit">
             <div class="form-text-wrapper">
                 <label class="form-text label">
+                    <span class="error" v-if="$v.title.$invalid && submitError">Поле является обязательным</span>
                     <span class="form-description require">Наименование товара</span>
                     <input type="text" class="form-text-input input" v-model.trim="$v.title.$model"
                            placeholder="Введите наименование товара">
-                    <span class="error" v-if="$v.title.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="form-textarea-wrapper">
@@ -18,18 +18,18 @@
             </div>
             <div class="form-image-wrapper">
                 <label class="form-image label">
+                    <span class="error" v-if="$v.image.$invalid && submitError">Поле является обязательным</span>
                     <span class="form-description require">Ссылка на изображение товара</span>
                     <input type="text" class="form-image-input input" v-model.trim="$v.image.$model"
                            placeholder="Введите ссылку">
-                    <span class="error" v-if="$v.image.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="form-price-wrapper">
                 <label class="form-price label">
+                    <span class="error" v-if="$v.price.$invalid && submitError">Поле является обязательным</span>
                     <span class="form-description require">Цена товара</span>
                     <input type="text" class="form-price-input input" v-model.trim="$v.price.$model"
                            placeholder="Введите цену">
-                    <span class="error" v-if="$v.price.$invalid && submitError">error</span>
                 </label>
             </div>
             <div class="button-wrapper">
@@ -59,11 +59,11 @@
             title: {
                 required,
                 minLength: minLength(3),
-                maxLength: maxLength(20),
+                maxLength: maxLength(50),
             },
             description: {
                 minLength: minLength(0),
-                maxLength: maxLength(50),
+                maxLength: maxLength(1000),
             },
             image: {
                 required
@@ -71,23 +71,24 @@
             price: {
                 required,
                 between: between(100, 100000)
-            }
+            },
+            reset: true,
         },
         methods: {
             ...mapMutations({setProducts: 'setProducts'}),
             submit() {
                 this.$v.$invalid ? this.submitError = true : this.setProducts({
-                    id: this.getProducts.length + 1,
+                    id: this.getProducts.length + Math.round(Math.random()),
                     title: this.title,
                     description: this.description,
                     image: this.image,
                     price: this.price,
-                })
+                });
             },
         },
         computed: {
             ...mapGetters({getProducts: 'getProducts'})
-        }
+        },
     }
 </script>
 
@@ -123,6 +124,11 @@
                 background: pink;
                 border-radius: 4px;
                 position: absolute;
+            }
+            .error {
+                font-size: 8px;
+                color: $pinkColor;
+                margin: 0 0 2px 0;
             }
         }
 
