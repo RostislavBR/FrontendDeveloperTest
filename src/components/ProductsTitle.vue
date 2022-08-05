@@ -15,6 +15,7 @@
         font-weight: $bolderFontWeight;
         line-height: $middleLineHeight;
         color: $blackColor;
-        flex-grow: 1;
+        flex-grow: 0;
+        margin: 0 0 17px 0;
     }
 </style>

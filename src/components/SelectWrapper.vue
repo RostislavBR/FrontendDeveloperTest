@@ -1,7 +1,7 @@
 <template>
     <div class="select-wrapper">
-        <p class="select-title">{{ defaultSort }}</p>
-        <div class="options">
+        <p class="select-title" @click="onClickDefaultFilter">{{ defaultSort }}</p>
+        <div class="options" @click="onClickFilter">
             <p v-for="option in options" :key="option.value" @click="selectOption(option)"
                class="option-item">
                 {{ option.name }}
@@ -12,6 +12,7 @@
 
 <script>
     import {mapMutations} from "vuex";
+    import gsap from "gsap";
 
     export default {
         name: "SelectWrapper",
@@ -23,27 +24,38 @@
         props: ['options'],
         methods: {
             ...mapMutations(['sortProducts']),
+            onClickDefaultFilter() {
+              gsap.to('.options', {
+                  duration: .4,
+                  delay: .2,
+                  opacity: 1,
+                  pointerEvents: 'all',
+              })
+            },
+            onClickFilter() {
+               gsap.to('.options', {
+                   duration: .2,
+                   delay: .2,
+                   opacity: 0,
+                   pointerEvents: 'none',
+                });
+            },
             sortByMin(first, second) {
-                console.log("min")
                 return first.price - second.price;
             },
             sortByMax(first, second) {
-                console.log("max")
                 return second.price - first.price;
             },
             sortByName(first, second) {
                 return second.title.length - first.title.length;
             },
             selectOption({name}) {
-                console.log('name', name)
                 switch (name) {
                     case "По убыванию":
                         this.defaultSort = name;
-                        console.log("min")
                         this.sortProducts(this.sortByMin);
                         break;
                     case "По возрастанию":
-                        console.log("max")
                         this.defaultSort = name;
                         this.sortProducts(this.sortByMax);
                         break;
@@ -63,7 +75,6 @@
     .select-wrapper {
         position: relative;
         width: 121.49px;
-        /*min-height: 36px;*/
         background: $formBackground;
 
         .select-title {
@@ -88,6 +99,8 @@
             box-shadow: $inputShadow;
             cursor: pointer;
             z-index: 100;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .option-item {
