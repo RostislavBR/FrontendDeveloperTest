@@ -9,8 +9,8 @@ export default new Vuex.Store({
     },
     mutations: {
         setProducts(state, payload) {
-          state.products = [ payload, ...state.products ];
-          localStorage.setItem('products', JSON.stringify(state.products));
+            state.products = [payload, ...state.products];
+            localStorage.setItem('products', JSON.stringify(state.products));
         },
         deleteProduct(state, payload) {
             state.products = state.products.filter(({id}) => id !== payload);

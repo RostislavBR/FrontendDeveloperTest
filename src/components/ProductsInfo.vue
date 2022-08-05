@@ -14,7 +14,7 @@
     export default {
         name: "ProductsInfo",
         props: ['title', 'description', 'price'],
-        components: { ProductsPrice, ProductsDescription, ProductsTitle }
+        components: {ProductsPrice, ProductsDescription, ProductsTitle}
     }
 </script>
 

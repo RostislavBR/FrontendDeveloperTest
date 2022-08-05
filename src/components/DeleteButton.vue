@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import { mapMutations } from  "vuex";
+    import {mapMutations} from "vuex";
     import gsap from "gsap";
 
     export default {
@@ -16,7 +16,7 @@
                     duration: .2,
                     delay: .1,
                     opacity: 0,
-                    onComplete:() => {
+                    onComplete: () => {
                         this.deleteProduct(this.id);
                     }
                 });

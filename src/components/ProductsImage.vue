@@ -13,8 +13,9 @@
 
 <style lang="scss">
     .image-wrapper {
-        margin:  0 0 10px 0;
+        margin: 0 0 15px 0;
         min-height: 200px;
+
         .image {
             width: 332px;
             max-height: 200px;
