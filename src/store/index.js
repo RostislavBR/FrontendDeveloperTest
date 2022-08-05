@@ -17,7 +17,6 @@ export default new Vuex.Store({
             localStorage.setItem('products', JSON.stringify(state.products));
         },
         sortProducts(state, payload) {
-            console.log(payload)
             state.products = state.products.sort(payload)
         }
     },
